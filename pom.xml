@@ -13,9 +13,6 @@
 	</properties>
 
 	<packaging>pom</packaging>
-	<modules>
-		<module>../chapter1</module>
-	</modules>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
