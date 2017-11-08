@@ -4,3 +4,5 @@ Note that you should avoid reducing emissions into collections for the sake of i
 
 51 - toList()
 52 - toSortedList()
+53 - toMap() and toMultiMap()
+54 - collect()
