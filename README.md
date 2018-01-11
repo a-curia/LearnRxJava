@@ -1,28 +1,40 @@
-### RxJava
+### Reactive Java or RxJava
 
-Observable.crate() : is a source Observable where emissions originate from and is the starting point of our Observable chain
-Observable.crate() factory : allows creation by prividing a lambda receiving an Observable emitter.
-onNext() method passes emissions(one a time) up the chain as well as onComplete() to signal completion and communicate that there will be no more items
+ 
 
-Observable factories
-Observable.create(), Observable.just(), and Observable.fromIterable()
-Observable.range()
-Observable.interval()
-Observable.future() - RxJava Observables are much more robust and expressive than Futures, but if you have existing libraries that Yield Futures, you can easily turn them into Observables via Observable.future()/Observable.fromFuture()
+-   it is an implementation and enhancement of the **Observer Pattern**
 
-Observable.empty() - is sometimes helpful to create an Observable that emits nothing and calls onComplete() - CONCEPT OF NULL
-Observable.never() - The only difference between them is that it never calls onComplete(), forever leaving observers waiting for emissions but never actually giving any
+-   the key addition to the Observer Pattern is the ability to determine when
+    event processing is complete or an error has occured
 
+-   intended for use in **event driven** schemes where nesting synchronous or
+    asynchronous callback methods becomes overly complex
 
+-   **abstracts** some of the more complex tasks associated with asynchronous
+    **operations including threading and concurrency**
 
-Observable.error() - This too is something you likely will only do with testing, but you can create an Observable that immediately calls onError() with a specified exception
+ 
 
+The primary components are **Observable/Flowable**, **Subscriber** and
+**operators**.
 
-Observable.defer() -  is a powerful factory due to its ability to create a separate state for each Observer; To remedy this problem of Observable sources not capturing state changes, you can create a fresh Observable for each subscription.
+**Observable** - collects and emits actions to a Subscriber who will perform an
+operation on the emitted items
 
+**Subscriber** - performs operations on the emitted items;
 
-Observable.fromCallable() - The error was emitted to the Observer rather than being thrown where it occurred. If initializing your emission has a likelihood of throwing an error, you should use Observable.fromCallable() instead of Observable.just().
+**Operators** - provide a way to manipulate the data that is emitted by an
+Observable before it is sent to the Subscriber for action
 
-Single<T> - is essentially an Observable<T> that will only emit one item. It works just like an Observable, but it is limited only to operators that make sense for a single emission.
+ 
 
-Maybe - A given Maybe<T> will only emit 0 or  1 emissions. It will pass the possible emission to onSuccess(), and in either case, it will call onComplete() when done
+flowable\~=observable
+
+**Flowable** will define a back pressure where an observable will not. The back
+pressure setting will define how downstream consumers handle emitted data
+
+ 
+
+ 
+
+ 
